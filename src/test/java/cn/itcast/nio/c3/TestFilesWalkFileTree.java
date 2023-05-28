@@ -5,7 +5,9 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.concurrent.atomic.AtomicInteger;
 
+//遍历文件夹 walkFileTree
 public class TestFilesWalkFileTree {
+    //递归遍历并删除文件（谨慎运行，该方法不走回收站）
     public static void main(String[] args) throws IOException {
 //        Files.delete(Paths.get("D:\\Snipaste-1.16.2-x64 - 副本"));
         Files.walkFileTree(Paths.get("D:\\Snipaste-1.16.2-x64 - 副本"), new SimpleFileVisitor<Path>() {
@@ -22,6 +24,7 @@ public class TestFilesWalkFileTree {
         });
     }
 
+    //统计jar文件数量
     private static void m2() throws IOException {
         AtomicInteger jarCount = new AtomicInteger();
         Files.walkFileTree(Paths.get("C:\\Program Files\\Java\\jdk1.8.0_91"), new SimpleFileVisitor<Path>(){
@@ -37,6 +40,7 @@ public class TestFilesWalkFileTree {
         System.out.println("jar count:" +jarCount);
     }
 
+    //统计文件数量
     private static void m1() throws IOException {
         AtomicInteger dirCount = new AtomicInteger();
         AtomicInteger fileCount = new AtomicInteger();

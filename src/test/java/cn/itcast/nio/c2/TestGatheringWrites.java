@@ -6,6 +6,9 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 
+
+//分散写入
+//words2.txt内容 onetwothree
 public class TestGatheringWrites {
     public static void main(String[] args) {
         ByteBuffer b1 = StandardCharsets.UTF_8.encode("hello");

@@ -5,6 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 
+//文件流的应用
+//transferTo，文件内容的拷贝
+//transferTo一次传输最多2g，如果超过了需要分开进行多次传输
 public class TestFileChannelTransferTo {
     public static void main(String[] args) {
         try (

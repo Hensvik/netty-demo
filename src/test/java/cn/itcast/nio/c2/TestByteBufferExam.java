@@ -28,6 +28,7 @@ public class TestByteBufferExam {
         source.flip();
         for (int i = 0; i < source.limit(); i++) {
             // 找到一条完整消息
+            // 如果遇到了 \n 的换行符
             if (source.get(i) == '\n') {
                 int length = i + 1 - source.position();
                 // 把这条完整消息存入新的 ByteBuffer
