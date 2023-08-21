@@ -15,6 +15,7 @@ public class Server {
     public static void main(String[] args) throws IOException {
         // 1. 创建 selector, 管理多个 channel
         Selector selector = Selector.open();
+        // 创建服务器
         ServerSocketChannel ssc = ServerSocketChannel.open();
         // 设置服务器为非阻塞
         ssc.configureBlocking(false);

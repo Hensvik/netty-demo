@@ -12,6 +12,7 @@ public class TestFilesCopy {
         String source = "D:\\Snipaste-1.16.2-x64";
         String target = "D:\\Snipaste-1.16.2-x64aaa";
 
+        //Files.walk为文件遍历方法
         Files.walk(Paths.get(source)).forEach(path -> {
             try {
                 String targetName = path.toString().replace(source, target);

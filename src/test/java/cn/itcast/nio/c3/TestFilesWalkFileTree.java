@@ -13,12 +13,12 @@ public class TestFilesWalkFileTree {
         Files.walkFileTree(Paths.get("D:\\Snipaste-1.16.2-x64 - 副本"), new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                Files.delete(file);
+                Files.delete(file);     //删除文件
                 return super.visitFile(file, attrs);
             }
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
-                Files.delete(dir);
+                Files.delete(dir);      //删除目录
                 return super.postVisitDirectory(dir, exc);
             }
         });

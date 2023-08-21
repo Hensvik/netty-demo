@@ -39,6 +39,11 @@ public class WriteServer {
                     // 3. 判断是否有剩余内容
                     if (buffer.hasRemaining()) {
                         // 4. 关注可写事件   1                     4
+                        //此处由于SelectionKey都是位运算，因此这里可以进行加减操作
+                        //OP_READ = 1 << 0;
+                        //OP_WRITE = 1 << 2
+                        //OP_CONNECT = 1 << 3
+                        //OP_ACCEPT = 1 << 4
                         sckey.interestOps(sckey.interestOps() + SelectionKey.OP_WRITE);
 //                        sckey.interestOps(sckey.interestOps() | SelectionKey.OP_WRITE);
                         // 5. 把未写完的数据挂到 sckey 上

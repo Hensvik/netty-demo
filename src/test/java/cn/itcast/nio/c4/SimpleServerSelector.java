@@ -74,7 +74,7 @@ public class SimpleServerSelector {
                             key.cancel();
                         }else{
                             split(buffer);
-                            if(buffer.position() = buffer.limit()){
+                            if(buffer.position() == buffer.limit()){
                                 ByteBuffer newBuffer = ByteBuffer.allocate(buffer.capacity()*2);
                                 buffer.flip();  //切换成读模式
                                 newBuffer.put(buffer);
