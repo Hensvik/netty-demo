@@ -22,6 +22,7 @@ public class SimpleServer {
 
         //1.创建了服务器
         ServerSocketChannel ssc = ServerSocketChannel.open();
+        ssc.configureBlocking(false);   //非阻塞模式
 
         //2.绑定监听端口
         ssc.bind(new InetSocketAddress(8080));
@@ -32,8 +33,12 @@ public class SimpleServer {
             //4.accept 建立与客户端的连接, SocketChannel 用来与客户端之间的通信
             log.debug("connecting...");
             SocketChannel sc = ssc.accept();    //阻塞方法，线程停止运行，等待用户端发送数据
-            log.debug("connected...{}",sc);
-            channels.add(sc);
+
+            if(sc != null){
+                log.debug("connected...{}",sc);
+                sc.configureBlocking(false);    //非阻塞模式
+                channels.add(sc);
+            }
 
             for (SocketChannel channel : channels) {
                 //5.接收客户端发送的数据
