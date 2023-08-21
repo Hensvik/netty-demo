@@ -16,6 +16,7 @@ public class Server {
         // 1. 创建 selector, 管理多个 channel
         Selector selector = Selector.open();
         ServerSocketChannel ssc = ServerSocketChannel.open();
+        // 设置服务器为非阻塞
         ssc.configureBlocking(false);
         // 2. 建立 selector 和 channel 的联系（注册）
         // SelectionKey 就是将来事件发生后，通过它可以知道事件和哪个channel的事件
