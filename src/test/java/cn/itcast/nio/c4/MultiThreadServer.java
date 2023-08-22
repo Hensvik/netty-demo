@@ -62,10 +62,10 @@ public class MultiThreadServer {
             if(!start) {
                 selector = Selector.open();
                 thread = new Thread(this, name);
-                thread.start();
+                thread.start(); //启动线程，执行run方法
                 start = true;
             }
-            selector.wakeup(); // 唤醒 select 方法 boss
+            selector.wakeup(); // 唤醒 select 方法 boss  解决多线程下 sc.register()和selector.select()的冲突问题，
             sc.register(selector, SelectionKey.OP_READ, null); // boss
         }
 
