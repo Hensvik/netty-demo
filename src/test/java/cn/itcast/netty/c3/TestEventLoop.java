@@ -20,7 +20,7 @@ public class TestEventLoop {
         System.out.println(group.next());
         System.out.println(group.next());
 
-        // 3. 执行普通任务
+        // 3. 执行普通任务(异步)
         /*group.next().execute(() -> {
             try {
                 Thread.sleep(1000);

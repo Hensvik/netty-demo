@@ -12,8 +12,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static cn.itcast.nio.c2.ByteBufferUtil.debugAll;
 
+//work.register()以及sc.register()会导致冲突，worker.register()需要在sc.register()的前提下运行才不会导致阻塞
+//2为原始代码
+
 @Slf4j
-public class MultiThreadServer {
+public class MultiThreadServer2 {
     public static void main(String[] args) throws IOException {
         Thread.currentThread().setName("boss");
         ServerSocketChannel ssc = ServerSocketChannel.open();
@@ -62,10 +65,10 @@ public class MultiThreadServer {
             if(!start) {
                 selector = Selector.open();
                 thread = new Thread(this, name);
-                thread.start(); //启动线程，执行run方法
+                thread.start();
                 start = true;
             }
-            selector.wakeup(); // 唤醒 select 方法 boss  解决多线程下 sc.register()和selector.select()的冲突问题，
+            selector.wakeup(); // 唤醒 select 方法 boss
             sc.register(selector, SelectionKey.OP_READ, null); // boss
         }
 
