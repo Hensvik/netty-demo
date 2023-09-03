@@ -7,9 +7,14 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
+//LTC解码器
 public class TestLengthFieldDecoder {
     public static void main(String[] args) {
         EmbeddedChannel channel = new EmbeddedChannel(
+                //lengthFieldOffset 长度字段偏移量
+                //lengthFieldLength 长度字段长度
+                //lengthAdjustment 长度字段为基准，还有几个字节是内容
+                //initialBytesToStrip 从头剥离几个字节
                 new LengthFieldBasedFrameDecoder(
                         1024, 0, 4, 1,4),
                 new LoggingHandler(LogLevel.DEBUG)

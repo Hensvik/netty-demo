@@ -32,6 +32,8 @@ public class TestHttp {
                 protected void initChannel(SocketChannel ch) throws Exception {
                     ch.pipeline().addLast(new LoggingHandler(LogLevel.DEBUG));
                     ch.pipeline().addLast(new HttpServerCodec());
+
+                    //SimpleChannelInboundHandler的作用：可以指定只关心httpRequest类型的消息
                     ch.pipeline().addLast(new SimpleChannelInboundHandler<HttpRequest>() {
                         @Override
                         protected void channelRead0(ChannelHandlerContext ctx, HttpRequest msg) throws Exception {

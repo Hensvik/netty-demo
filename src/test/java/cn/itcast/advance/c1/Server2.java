@@ -13,6 +13,8 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import lombok.extern.slf4j.Slf4j;
 
+//固定长度解决粘包问题
+
 @Slf4j
 public class Server2 {
     void start() {
@@ -29,7 +31,7 @@ public class Server2 {
             serverBootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 protected void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new FixedLengthFrameDecoder(10));
+                    ch.pipeline().addLast(new FixedLengthFrameDecoder(10));     //这里是固定长度解码器
                     ch.pipeline().addLast(new LoggingHandler(LogLevel.DEBUG));
                 }
             });

@@ -30,7 +30,7 @@ public class Server3 {
             serverBootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 protected void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
+                    ch.pipeline().addLast(new LineBasedFrameDecoder(1024));     //添加换行符解码器，1024为最大长度，如果1024后仍没有分隔符，则会报错
                     ch.pipeline().addLast(new LoggingHandler(LogLevel.DEBUG));
                 }
             });
